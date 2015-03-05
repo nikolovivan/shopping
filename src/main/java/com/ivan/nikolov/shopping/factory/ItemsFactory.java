@@ -15,7 +15,15 @@ import com.ivan.nikolov.shopping.model.Soup;
  * @author inikolov
  *
  */
-public class ItemsFactory {
+public final class ItemsFactory {
+
+    /**
+     * Just because we don't want to instantiate this class.
+     * At least for now.
+     */
+    private ItemsFactory() {
+
+    }
 
     public static Item getItem(final String name) throws UnknownItemExeption {
         switch (name.toUpperCase()) {

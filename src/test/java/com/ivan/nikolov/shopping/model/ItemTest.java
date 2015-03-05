@@ -12,7 +12,7 @@ import org.junit.Test;
  */
 public class ItemTest {
 
-    // no neeed to test getters...
+    // no need to test getters...
 
     @Test
     public void gettingNonDiscountedItemFinalPrice() {
@@ -38,17 +38,15 @@ public class ItemTest {
         Assert.assertEquals(0.1, apples.getDiscountedAmount(), 0);
     }
 
-    @Test
-    public void gettingNegativeDiscountsShouldIncreaseThePrice() {
-        Item item = new Item("test", 10, -10) {
+    @Test(expected = IllegalArgumentException.class)
+    public void creatingAnItemWithNegativeDiscount() {
+        new Item("Name", 10, -10) {
         };
-        Assert.assertEquals(11.0, item.getFinalPrice(), 0);
     }
 
-    @Test
-    public void gettingNegativeDictountsShouldReturnTheDiscountedAmountAsNegative() {
-        Item item = new Item("test", 10, -10) {
+    @Test(expected = IllegalArgumentException.class)
+    public void creatingAnItemWithNegativePrice() {
+        new Item("Name", -10, 10) {
         };
-        Assert.assertEquals(-1, item.getDiscountedAmount(), 0);
     }
 }
